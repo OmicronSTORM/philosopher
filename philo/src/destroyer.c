@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   destroyer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 18:06:28 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/13 18:20:56 by jowoundi         ###   ########.fr       */
+/*   Created: 2025/10/13 17:23:38 by jowoundi          #+#    #+#             */
+/*   Updated: 2025/10/13 18:08:13 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_isdigit(int c)
+void	kill_em_all(t_philo *philo, t_data *data)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+	int		i;
+	t_philo	*temp;
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-long long	ms(void)
-{
-	struct timeval	tv;
-	long long		val;
-
-	gettimeofday(&tv, NULL);
-	val = (long long)tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return (val);
-}
-
-void	dodo(int ms)
-{
-	usleep(ms * 1000);
+	i = -1;
+	pthread_mutex_destroy(&data->mut_dead);
+	pthread_mutex_destroy(&data->message);
+	while (++i < data->nb_philo)
+		pthread_mutex_destroy(&philo->data->fork[i]);
+	free(data->fork);
+	pthread_mutex_destroy(&philo->lock_meal);
+	while (philo)
+	{
+		temp = philo->next;
+		free(philo);
+		philo = temp;
+	}
+	free(data);
 }

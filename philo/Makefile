@@ -6,13 +6,13 @@
 #    By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/28 16:36:17 by jowoundi          #+#    #+#              #
-#    Updated: 2025/10/08 14:43:36 by jowoundi         ###   ########.fr        #
+#    Updated: 2025/10/13 18:25:21 by jowoundi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread -g3
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=thread -g3
 GREEN   = "\\033[32m"
 YELLOW	= "\\033[33m"
 NC      = "\\033[0m"
@@ -23,7 +23,8 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 # Source files from the src directory
-SRCS = main.c fill_data.c utils.c parsing.c init_philo.c routine.c print_message.c
+SRCS = main.c fill_data.c utils.c parsing.c init_philo.c routine.c print_message.c \
+		destroyer.c utils_bis.c routine_utils.c
 
 OBJS = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
 

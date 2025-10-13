@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:07:55 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/08 12:27:42 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/10/13 18:17:57 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_data	*fill_data(char **line)
 {
-	t_data	*data;
+	t_data			*data;
 	pthread_mutex_t	*fork_array;
-	int	i;
+	int				i;
 
 	i = -1;
 	data = NULL;
@@ -24,6 +24,7 @@ t_data	*fill_data(char **line)
 	pthread_mutex_init(&data->mut_dead, NULL);
 	pthread_mutex_init(&data->message, NULL);
 	data->nb_eat = -1;
+	data->dead = false;
 	data->nb_philo = ft_atoi(line[1]);
 	data->ttd = ft_atoi(line[2]);
 	data->tte = ft_atoi(line[3]);
