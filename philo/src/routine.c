@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:28:31 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/21 16:17:37 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/10/22 12:43:58 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static void	monitor(t_philo *philo)
 				break ;
 			}
 			pthread_mutex_unlock(&philo->lock_meal);
-			usleep(1);
 		}
+		usleep(1);
 	}
 }
 
