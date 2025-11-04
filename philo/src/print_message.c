@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 14:43:18 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/13 18:14:09 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:07:03 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	print_message(char *message, t_philo *philo)
 {
+	bool	dead;
+
 	pthread_mutex_lock(&philo->data->mut_dead);
-	if (philo->data->dead)
-	{
-		pthread_mutex_unlock(&philo->data->mut_dead);
-		return ;
-	}
+	dead = philo->data->dead;
 	pthread_mutex_unlock(&philo->data->mut_dead);
+	if (dead)
+		return ;
 	pthread_mutex_lock(&philo->data->message);
 	printf("%lld philo %d %s\n", ms() - philo->data->s_time, \
 		philo->id_philo, message);

@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 18:28:31 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/22 12:43:58 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/11/04 15:42:34 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*routine(void *data)
 	philo = (t_philo *)data;
 	left_fork = philo->fork_l;
 	right_fork = philo->fork_r;
-	if (philo->id_philo % 2 != 0)
+	if (philo->id_philo % 2 != 0 && philo->id_philo != philo->data->nb_philo)
 	{
 		left_fork = philo->fork_r;
 		right_fork = philo->fork_l;
@@ -60,7 +60,7 @@ static void	start_threads(t_philo *philo, pthread_t *pid)
 		runner = runner->next;
 		i++;
 	}
-	usleep(1);
+	usleep(1000);
 }
 
 static void	monitor(t_philo *philo)

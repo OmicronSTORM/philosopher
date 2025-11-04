@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 17:12:41 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/10/13 17:48:58 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:13:04 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@ int	main(int ac, char **av)
 		data = NULL;
 		philo = NULL;
 		data = fill_data(av);
+		if (!data)
+			return (EXIT_FAILURE);
 		philo = init_philo(data);
 		set(philo);
 		kill_em_all(philo, data);
 	}
 	else
-		printf("(n_of_philo) (t_to_die) (t_to_eat) (t_to_sleep) [n_of_eat]\n");
-	return (0);
+		printf("usage: %s %s\n", av[0],
+			"(n_of_philo) (t_to_die) (t_to_eat) (t_to_sleep) [n_of_eat]");
+	return (EXIT_SUCCESS);
 }
