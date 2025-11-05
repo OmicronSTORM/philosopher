@@ -6,7 +6,7 @@
 /*   By: jowoundi <jowoundi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 18:21:26 by jowoundi          #+#    #+#             */
-/*   Updated: 2025/11/04 15:47:55 by jowoundi         ###   ########.fr       */
+/*   Updated: 2025/11/05 12:51:55 by jowoundi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	is_dead(t_philo *philo)
 
 bool	take_fork(pthread_mutex_t *fork, t_philo *philo)
 {
-	bool dead;
+	bool	dead;
 
 	pthread_mutex_lock(&philo->data->mut_dead);
 	dead = philo->data->dead;
